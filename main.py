@@ -44,28 +44,36 @@ def home():
       drivetime = int(input(Fore.GREEN + "How long for? (Minutes)" + Fore.RESET))
     else:
       drivetime = 0
-      print(Fore.GREEN + "Question #2:\n Did you order takeout today? (y/n)" + Fore.RESET)
-      takeoutinput = input()
-      if takeoutinput == "y":
-        print(Fore.GREEN + "How many times?" + Fore.RESET)
-        takeouttimes = int(input())
-        print(Fore.GREEN + "How many people?" + Fore.RESET)
-        takeoutppl = int(input())
-      else:
-        takeoutppl = 0
-        takeouttimes = 0
-      print(Fore.GREEN + "Question #3:\n Did you use a laptop and/or phone today? (y/n)" + Fore.RESET)
-      screensinput = input()
-      if screensinput.lower() == "y":
-        print(Fore.GREEN + "How long for? (Minutes)" + Fore.RESET)
-        screentime = int(input())
-      else:
-        screentime = 0
+    print(Fore.GREEN + "Question #2:\n Did you order takeout today? (y/n)" + Fore.RESET)
+    takeoutinput = input()
+    if takeoutinput == "y":
+      print(Fore.GREEN + "How many times?" + Fore.RESET)
+      takeouttimes = int(input())
+      print(Fore.GREEN + "How many people?" + Fore.RESET)
+      takeoutppl = int(input())
+    else:
+      takeoutppl = 0
+      takeouttimes = 0
+    print(Fore.GREEN + "Question #3:\n Did you use a laptop and/or phone today? (y/n)" + Fore.RESET)
+    screensinput = input()
+    if screensinput.lower() == "y":
+      print(Fore.GREEN + "How long for? (Minutes)" + Fore.RESET)
+      screentime = int(input())
+    else:
+      screentime = 0
+    print(Fore.GREEN + "Question #4:\n Did you fly on a plane today? (y/n)" + Fore.RESET)
+    flightinput = input()
+    if flightinput.lower() == "y":
+      print(Fore.GREEN + "How long for? (Hours)" + Fore.RESET)
+      flighttime = int(input())
+    else:
+      flighttime = 0
     wattsused = screentime*0.0985
     litresperminute = 0.01
     gasused = litresperminute*drivetime
+    gasused += 2508*flighttime
     foodandplasticwaste = 15*takeoutppl*takeouttimes
-    print(Fore.GREEN + f"You used {gasused} litres of gas today, and made about {foodandplasticwaste} grams of packaging/plastic waste today. You also used {wattsused} watts.\n**Please Note That This Is Based On Averages**")
+    print(Fore.GREEN + f"You used {gasused} litres of gas today, and made about {foodandplasticwaste} grams of packaging/plastic waste today. You also used {wattsused} watts of power.\n**Please Note That This Is Based On Averages**")
     if foodandplasticwaste <= 100:
       points += 10
     elif foodandplasticwaste <= 150:
